@@ -1,11 +1,13 @@
 package com.example.sjsu.FastAPI;
 
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.sql.Blob;
 import java.util.HashMap;
 import java.util.Map;
 
+@Service
 public class studyYolo {
     /*private BoardRepository boardRepository;
     public MovieRecommender(BoardRepository boardRepository) {
@@ -24,6 +26,7 @@ public class studyYolo {
 
         System.out.println("MovieId: " + decodedResult);
         return decodedResult;*/
+        return "아아";
     }
 
 }

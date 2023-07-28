@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.sql.Blob;
+import java.util.List;
 
 @RequestMapping("/ai")
 @RestController
@@ -20,8 +21,8 @@ public class AutomaticDoor {
     }
 
     @GetMapping("yolo")
-    public ResponseEntity<String> studyyolo(@RequestParam Blob img) {
-        studyyolo.study(img); //FestAPI로 넘기기
+    public ResponseEntity<String> studyyolo(@RequestParam List<Blob> img){
+        studyyolo.study(img); //FastAPI로 넘기기
         return ResponseEntity.ok().body("학습성공!");
     }
 }

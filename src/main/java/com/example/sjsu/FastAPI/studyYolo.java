@@ -1,5 +1,7 @@
 package com.example.sjsu.FastAPI;
 
+import com.example.sjsu.DTO.dogForm;
+import com.example.sjsu.Repository.dogRepository;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -12,6 +14,13 @@ import java.util.List;
 
 @Service
 public class studyYolo {
+
+    private dogRepository dogrepository;
+
+    public studyYolo(dogRepository dogrepository){
+        this.dogrepository = dogrepository;
+    }
+
     public void study(List<Blob> img) {
         final String uri = "http://edu.sky100.kr:10200/items/4";
         RestTemplate restTemplate = new RestTemplate(); //REST API 호출 수행
@@ -25,5 +34,10 @@ public class studyYolo {
         } else {
             System.out.println("학습 실패: " + responseEntity.getStatusCodeValue());
         }
+    }
+    public void join(String name){
+
+        dogrepository.save(name);
+
     }
 }

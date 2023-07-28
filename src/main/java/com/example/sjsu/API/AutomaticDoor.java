@@ -1,6 +1,7 @@
 package com.example.sjsu.API;
 
 import com.example.sjsu.FastAPI.studyYolo;
+import com.example.sjsu.Repository.dogRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,13 +16,15 @@ import java.util.List;
 public class AutomaticDoor {
 
     private studyYolo studyyolo;
-
-    public AutomaticDoor(studyYolo studyyolo) {
+    public AutomaticDoor(studyYolo studyyolo, dogRepository dogrepository) {
         this.studyyolo = studyyolo;
     }
 
     @GetMapping("yolo")
-    public ResponseEntity<String> studyyolo(@RequestParam List<Blob> img){
+    public ResponseEntity<String> studyyolo(@RequestParam List<Blob> img,
+                                            @RequestParam String name){
+
+        studyyolo.join(name);
         studyyolo.study(img); //FastAPI로 넘기기
         return ResponseEntity.ok().body("학습성공!");
     }

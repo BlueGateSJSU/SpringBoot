@@ -3,11 +3,11 @@ package com.example.sjsu.API;
 import com.example.sjsu.FastAPI.applicationService;
 import com.example.sjsu.FastAPI.studyYolo;
 import lombok.RequiredArgsConstructor;
+import org.apache.coyote.Response;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
+import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/app")
 @RestController
@@ -15,10 +15,22 @@ import org.springframework.web.bind.annotation.RestController;
 public class application {
 
     private applicationService applicationservice;
-
-    public application(applicationService applicationservice) {
+    private FaceRecognitionController faceRecognitionController;
+    public application(applicationService applicationservice, FaceRecognitionController faceRecognitionController) {
         this.applicationservice = applicationservice;
+        this.faceRecognitionController = faceRecognitionController;
     }
+
+    /*  @PostMapping("/face_recognition_result")
+    public ResponseEntity<String> uodateFaceFecognitionResult(@RequestBody boolean faceDetected){
+        faceRecognitionController.sendStatusUpdate(faceDetected);
+
+        if(faceDetected){
+            return ResponseEntity.ok().body("");
+        }else{
+            return ResponseEntity.ok().body("");
+        }
+    }*/
     @GetMapping("alarm")
     public void al(){
         // 얼굴 인식을 요청하고 결과를 Front End에 전송하는 로직을 작성합니다.

@@ -5,15 +5,43 @@ import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
+import java.io.IOException;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
+
 @Component
 public class FaceRecognitionHandler extends TextWebSocketHandler {
+    private List<WebSocketSession> sessions = new CopyOnWriteArrayList<>();
 
     @Override
-    protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
-        // 얼굴 인식 결과를 클라이언트에게 전달
-        // message.getPayload()를 통해 얼굴 인식 결과 데이터를 가져올 수 있습니다.
-        // 예를 들어, "{ "result": "detected" }" 형식으로 전달한다고 가정합니다.
-        String faceRecognitionResult = "{ \"result\": \"detected\" }";
-        session.sendMessage(new TextMessage(faceRecognitionResult));
+    public void handleTextMessage(WebSocketSession session, TextMessage message) {
+        for (WebSocketSession webSocketSession : sessions) {
+            if (webSocketSession.isOpen()) {
+                try {
+                    webSocketSession.sendMessage(message);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public void sendMessageToClients(String message) {
+        TextMessage textMessage = new TextMessage(message);
+        for (WebSocketSession webSocketSession : sessions) {
+            if (webSocketSession.isOpen()) {
+                try {
+                    webSocketSession.sendMessage(textMessage);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+
+    @Override
+    public void afterConnectionEstablished(WebSocketSession session) {
+        sessions.add(session);
     }
 }

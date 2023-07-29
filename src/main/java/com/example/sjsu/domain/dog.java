@@ -10,28 +10,29 @@ import java.util.List;
 
 @Getter
 @NoArgsConstructor
+@Table(name = "sjsu")
 @Entity
 public class dog {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "dogid_generator")
-    @SequenceGenerator(name = "dogid_generator", sequenceName = "dogid_seq", initialValue = 1)
     @Column(name = "dogid")
     private long dogid;
     @Column(length = 40, nullable = false)
     private String name;
 
-    private List<Blob> img;
+    @Column
+    @Lob
+    private Blob profile;
 
     public void setName(String name){
         this.name = name;
     }
 
-    public void setImg(List<Blob> img){
-        this.img = img;
+    public void setImg(Blob profile){
+        this.profile = profile;
     }
 
-    public dog(String name, List<Blob> img){
+    public dog(String name, Blob profile){
         this.name = name;
-        this.img = img;
+        this.profile = profile;
     }
 }

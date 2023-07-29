@@ -13,9 +13,8 @@ import java.util.List;
 @Getter
 @Setter
 public class dogForm {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String name;
-    private List<Blob> img;
+    private Blob profile;
 
-    public dog toEntity(){ return new dog(name, img); }
+    //public dog toEntity(){ return new dog(name, profile); }
 }

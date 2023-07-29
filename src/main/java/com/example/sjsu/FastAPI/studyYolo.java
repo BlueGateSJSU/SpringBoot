@@ -1,7 +1,7 @@
 package com.example.sjsu.FastAPI;
 
-import com.example.sjsu.DTO.dogForm;
 import com.example.sjsu.Repository.dogRepository;
+import com.example.sjsu.domain.dog;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -35,9 +35,8 @@ public class studyYolo {
             System.out.println("학습 실패: " + responseEntity.getStatusCodeValue());
         }
     }
-    public void join(String name){
-
-        dogrepository.save(name);
-
+    public void join(String name, Blob profile){
+        dog dog1 = new dog(name, profile);
+        dogrepository.save(dog1);
     }
 }

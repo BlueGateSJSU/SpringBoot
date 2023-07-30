@@ -21,17 +21,17 @@ public class dog {
 
     @Column
     @Lob
-    private Blob profile;
+    private Byte[] profile;
 
     public void setName(String name){
         this.name = name;
     }
 
-    public void setImg(Blob profile){
+    public void setImg(Byte[] profile){
         this.profile = profile;
     }
 
-    public dog(String name, Blob profile){
+    public dog(String name, Byte[] profile){
         this.name = name;
         this.profile = profile;
     }

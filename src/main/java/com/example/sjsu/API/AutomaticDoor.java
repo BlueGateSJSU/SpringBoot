@@ -22,7 +22,7 @@ public class AutomaticDoor {
 
     @GetMapping("yolo")
     public ResponseEntity<String> studyyolo(@RequestParam List<Blob> img,
-                                            @RequestParam Blob profile,
+                                            @RequestParam Byte[] profile,
                                             @RequestParam String name){
 
         studyyolo.join(name, profile);

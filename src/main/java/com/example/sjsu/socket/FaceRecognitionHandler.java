@@ -15,10 +15,11 @@ public class FaceRecognitionHandler extends TextWebSocketHandler {
 
     @Override
     public void handleTextMessage(WebSocketSession session, TextMessage message) {
+        TextMessage textMessage = new TextMessage("Hello, \n 웹소켓 테스트입니다.");
         for (WebSocketSession webSocketSession : sessions) {
             if (webSocketSession.isOpen()) {
                 try {
-                    webSocketSession.sendMessage(message);
+                    webSocketSession.sendMessage(textMessage);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

@@ -35,7 +35,7 @@ public class studyYolo {
             System.out.println("학습 실패: " + responseEntity.getStatusCodeValue());
         }
     }
-    public void join(String name, Blob profile){
+    public void join(String name, Byte[] profile){
         dog dog1 = new dog(name, profile);
         dogrepository.save(dog1);
     }

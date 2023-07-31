@@ -11,4 +11,4 @@ public class dogForm {
     private Byte[] profile;
 
     //public dog toEntity(){ return new dog(name, profile); }
-}
+}//지워도되는거

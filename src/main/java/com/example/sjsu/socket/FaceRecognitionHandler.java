@@ -25,7 +25,7 @@ public class FaceRecognitionHandler extends TextWebSocketHandler {
                 }
             }
         }
-    }
+    } //Test용
 
     public void sendMessageToClients(String message) {
         TextMessage textMessage = new TextMessage(message);

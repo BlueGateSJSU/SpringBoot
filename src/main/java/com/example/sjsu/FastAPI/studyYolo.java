@@ -8,7 +8,6 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
-import java.sql.Blob;
 import java.util.List;
 
 @Service
@@ -39,7 +38,7 @@ public class studyYolo {
             System.out.println("학습 실패: " + responseEntity.getStatusCodeValue());
         }
     }
-    public void join(String name, Byte[] profile){
+    public void join(String name, byte[] profile){
         dog dog1 = new dog(name, profile);
         dogrepository.save(dog1);
     }

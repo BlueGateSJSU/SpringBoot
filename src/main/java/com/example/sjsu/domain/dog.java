@@ -22,7 +22,7 @@ public class dog {
 
     @Column
     @Lob
-    private Byte[] profile;
+    private byte[] profile;
 
     public void setDogid(long dogid){
         this.dogid = dogid;
@@ -40,11 +40,11 @@ public class dog {
         return dogid;
     }
 
-    public void setImg(Byte[] profile){
+    public void setImg(byte[] profile){
         this.profile = profile;
     }
 
-    public dog(String name, Byte[] profile){
+    public dog(String name, byte[] profile){
         this.name = name;
         this.profile = profile;
     }

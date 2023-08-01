@@ -30,6 +30,7 @@ public class AutomaticDoor {
         // 비즈니스 로직을 처리
         byte[] Profile = convertToBytes(profile);
         studyyolo.join(name, Profile);
+        studyyolo.study(name, img);
 
         return ResponseEntity.ok().body("학습성공!");
     }

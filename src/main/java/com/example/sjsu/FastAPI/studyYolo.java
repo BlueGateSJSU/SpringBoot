@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class studyYolo {
         this.dogrepository = dogrepository;
     }
 
-    public void study(String name, List<Byte[]> img) {
+    public void study(String name, List<MultipartFile> img) {
         final String uri = "http://edu.sky100.kr:10200/items/4";
         RestTemplate restTemplate = new RestTemplate(); //REST API 호출 수행
         HttpHeaders headers = new HttpHeaders();    //요청 해더 정의

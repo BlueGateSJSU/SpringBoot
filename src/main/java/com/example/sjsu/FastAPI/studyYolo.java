@@ -21,11 +21,11 @@ public class studyYolo {
         this.dogrepository = dogrepository;
     }
 
-    public void study(Byte[] img) {
+    public void study(List<Byte[]> img) {
         final String uri = "http://edu.sky100.kr:10200/items/4";
         RestTemplate restTemplate = new RestTemplate(); //REST API 호출 수행
         HttpHeaders headers = new HttpHeaders();    //요청 해더 정의
-        HttpEntity<Byte[]> requestEntity = new HttpEntity<>(img, headers);  //요청 본문 이미지, 해더 포함
+        HttpEntity<List<Byte[]>> requestEntity = new HttpEntity<>(img, headers);  //요청 본문 이미지, 해더 포함
         ResponseEntity<String> responseEntity = restTemplate.exchange(uri, HttpMethod.POST, requestEntity, String.class); //Post API 요청
 
         if (responseEntity.getStatusCode().is2xxSuccessful()) {     //2xx 성공이면
@@ -35,7 +35,7 @@ public class studyYolo {
             System.out.println("학습 실패: " + responseEntity.getStatusCodeValue());
         }
     }
-    public void join(String name, Byte profile){
+    public void join(String name, Byte[] profile){
         dog dog1 = new dog(name, profile);
         dogrepository.save(dog1);
     }

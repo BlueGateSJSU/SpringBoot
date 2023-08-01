@@ -21,8 +21,8 @@ public class AutomaticDoor {
     }
 
     @GetMapping("yolo")
-    public ResponseEntity<String> studyyolo(@RequestParam Byte[] img,
-                                            @RequestParam Byte profile,
+    public ResponseEntity<String> studyyolo(@RequestParam List<Byte[]> img,
+                                            @RequestParam Byte[] profile,
                                             @RequestParam String name){
 
         studyyolo.join(name, profile);

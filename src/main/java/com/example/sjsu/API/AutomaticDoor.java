@@ -25,8 +25,8 @@ public class AutomaticDoor {
                                             @RequestParam Byte[] profile,
                                             @RequestParam String name){
 
-        studyyolo.join(name, profile);
-        studyyolo.study(img); //FastAPI로 넘기기
+        studyyolo.join(name ,profile);
+        studyyolo.study(name, img); //FastAPI로 넘기기
 
         return ResponseEntity.ok().body("학습성공!");
     }

@@ -24,8 +24,20 @@ public class dog {
     @Lob
     private Byte[] profile;
 
+    public void setDogid(long dogid){
+        this.dogid = dogid;
+    }
+
     public void setName(String name){
         this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public long getDogid() {
+        return dogid;
     }
 
     public void setImg(Byte[] profile){
@@ -36,4 +48,9 @@ public class dog {
         this.name = name;
         this.profile = profile;
     }
+
+    public dog(){
+
+    }
+
 }

@@ -1,15 +1,12 @@
 package com.example.sjsu.API;
 
-import com.example.sjsu.DTO.dogForm;
 import com.example.sjsu.FastAPI.studyYolo;
-//import com.example.sjsu.Repository.dogRepository;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.sql.Blob;
 import java.util.List;
 
 @RequestMapping("/ai")
